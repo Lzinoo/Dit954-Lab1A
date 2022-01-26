@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * A class that creates a car object
  */
-public class Cars implements Movable {
+public abstract class Cars implements Movable {
 
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
@@ -76,6 +76,9 @@ public class Cars implements Movable {
         currentSpeed = 0;
     }
 
+    public abstract void incrementSpeed(double amount);
+    public abstract void decrementSpeed(double amount);
+
 
     @Override
     public void move() {
@@ -109,4 +112,29 @@ public class Cars implements Movable {
 
     }
 
+    public void gas(double amount){
+
+        double tmp = currentSpeed;
+
+        if (amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+        }
+
+        if (currentSpeed < tmp) {
+            currentSpeed = tmp;
+        }
+    }
+
+    public void brake(double amount){
+
+        double tmp = currentSpeed;
+
+        if (amount >= 0 && amount <= 1) {
+            decrementSpeed(amount);
+        }
+
+        if (currentSpeed > tmp) {
+            currentSpeed = tmp;
+        }
+    }
 }
