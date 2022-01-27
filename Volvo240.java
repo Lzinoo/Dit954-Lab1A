@@ -14,6 +14,11 @@ public class Volvo240 extends Cars {
         modelName = "Volvo240";
         stopEngine();
     }
+
+    /** Altered method for Volvo240 for use in methods incrementSpeed
+     * and decrementSpeed. Value changes depending on value of <i>trimFactor</i>.
+     * @return New speedFactor.
+     */
     public double speedFactor(){
         return enginePower * 0.01 * trimFactor;
     }

@@ -22,7 +22,11 @@ public class Saab95 extends Cars {
     public void setTurboOff(){
 	    turboOn = false;
     }
-    
+
+    /** Altered method for Saab95 for use in methods incrementSpeed
+     * and decrementSpeed. Value changes depending on the state of <i>turboOn</i>.
+     * @return New speedFactor.
+     */
     public double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
