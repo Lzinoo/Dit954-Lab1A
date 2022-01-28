@@ -1,3 +1,5 @@
+// Authors: Leyl Cumar, Adam Norberg, Elias Haqiqat
+// Group 14
 import java.awt.*;
 
 /**
@@ -10,7 +12,6 @@ public abstract class Cars implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-
 
     private double x; // The car's position in the x-axis
     private double y; // The car's position in the y-axis
