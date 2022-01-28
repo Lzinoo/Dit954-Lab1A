@@ -123,16 +123,27 @@ public abstract class Cars implements Movable {
         currentSpeed = 0;
     }
 
-    /** An abstract method to increase the currentSpeed of the car.
+    /** A method to increase the currentSpeed of the car.
      * @param amount How much the speed should be increased.
      */
-    public abstract void incrementSpeed(double amount);
-
-    /** An abstract method to decrease the currentSpeed of the car.
+    private void incrementSpeed(double amount){
+        double increasedSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,getEnginePower());
+        if (increasedSpeed > getCurrentSpeed())
+            setCurrentSpeed(increasedSpeed);
+    }
+    /** A method to decrease the currentSpeed of the car.
      * @param amount How much the speed should be decreased.
      */
-    public abstract void decrementSpeed(double amount);
+    private void decrementSpeed(double amount){
+        double decreasedSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+        if (decreasedSpeed < getCurrentSpeed())
+            setCurrentSpeed(decreasedSpeed);
+    }
 
+    /**
+     * Am abstract method used in calculating the car's currentSpeed
+     */
+    public abstract double speedFactor();
 
     /**
      * Method to move the car along the X or Y axis depending on the
@@ -180,15 +191,8 @@ public abstract class Cars implements Movable {
      * @param amount The increase in speed from 0 (inclusive) to 1 (inclusive).
      */
     public void gas(double amount){
-
-        double tmp = currentSpeed;
-
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
-        }
-
-        if (currentSpeed < tmp) {
-            currentSpeed = tmp;
         }
     }
 
@@ -196,15 +200,8 @@ public abstract class Cars implements Movable {
      * @param amount The decrease in speed from 0 (inclusive) to 1 (inclusive).
      */
     public void brake(double amount){
-
-        double tmp = currentSpeed;
-
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
-        }
-
-        if (currentSpeed > tmp) {
-            currentSpeed = tmp;
         }
     }
 }
