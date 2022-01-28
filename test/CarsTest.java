@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
-    private Cars testVolvo;
-    private Cars testSaab;
+    private Volvo240 testVolvo;
+    private Saab95 testSaab;
 
     // Create two Cars objects, one Volvo240 and one Saab95.
     @BeforeEach
@@ -18,7 +18,6 @@ class CarsTest {
     // After Gas method is called, new currentSpeed should be greater than before.
     @Test
     public void volvoSpeedIncreaseTest() {
-        testVolvo.setCurrentSpeed(50);
         double initialSpeed = testVolvo.getCurrentSpeed();
         testVolvo.gas(1);
         assert (testVolvo.getCurrentSpeed() > initialSpeed);
@@ -27,7 +26,6 @@ class CarsTest {
     // After Gas method is called, new currentSpeed should be greater than before.
     @Test
     public void saabSpeedIncreaseTest() {
-        testSaab.setCurrentSpeed(50);
         double initialSpeed = testSaab.getCurrentSpeed();
         testSaab.gas(1);
         assert (testSaab.getCurrentSpeed() > initialSpeed);
@@ -36,7 +34,7 @@ class CarsTest {
     // After Brake method is called, new currentSpeed should be smaller than before.
     @Test
     public void volvoSpeedDecreaseTest() {
-        testVolvo.setCurrentSpeed(50);
+        testVolvo.gas(1);
         double initialSpeed = testVolvo.getCurrentSpeed();
         testVolvo.brake(1);
         assert (testVolvo.getCurrentSpeed() < initialSpeed);
@@ -45,7 +43,7 @@ class CarsTest {
     // After Brake method is called, new currentSpeed should be smaller than before.
     @Test
     public void saabSpeedDecreaseTest() {
-        testSaab.setCurrentSpeed(50);
+        testSaab.gas(1);
         double initialSpeed = testSaab.getCurrentSpeed();
         testSaab.brake(1);
         assert (testSaab.getCurrentSpeed() < initialSpeed);
@@ -55,11 +53,24 @@ class CarsTest {
     // while X and Direction stays the same.
     @Test
     public void doesCarMove() {
-        testSaab.setX(0);
-        testSaab.setY(0);
-        testSaab.setDir(Cars.direction.NORTH);
-        testSaab.setCurrentSpeed(50);
+        testSaab.gas(1);
         testSaab.move();
         assert(testSaab.getX() == 0 && testSaab.getY() != 0 && testSaab.getDir() == Cars.direction.NORTH);
     }
+
+    //Checks so that turnLeft() changes the direction correctly
+    @Test
+    public void doesCarTurnLeft() {
+        testVolvo.turnLeft();
+        assert (testVolvo.getDir() == Cars.direction.WEST);
+    }
+
+    //Checks so that turnRight() changes the direction correctly
+    @Test
+    public void doesCarTurnRight() {
+        testVolvo.turnRight();
+        assert (testVolvo.getDir() == Cars.direction.EAST);
+    }
+
+
 }

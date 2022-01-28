@@ -6,12 +6,13 @@ import java.awt.*;
 public class Volvo240 extends Cars {
 
     private final static double trimFactor = 1.25;
-    
+
+    /**
+     * A Volvo 240 object is a subtype of Cars - has 4 doors, is the color Black, 100 in engine power,
+     *  and engine is off by default.
+     */
     public Volvo240(){
-        nrDoors = 4;
-        color = Color.black;
-        enginePower = 100;
-        modelName = "Volvo240";
+        super(4, 100, Color.black, "Volvo240");
         stopEngine();
     }
 
@@ -20,6 +21,6 @@ public class Volvo240 extends Cars {
      * @return New speedFactor.
      */
     public double speedFactor(){
-        return enginePower * 0.01 * trimFactor;
+        return getEnginePower() * 0.01 * trimFactor;
     }
 }
