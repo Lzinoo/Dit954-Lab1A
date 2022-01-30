@@ -11,6 +11,11 @@ public class Volvo240 extends Cars {
      * A Volvo 240 object is a subtype of Cars - has 4 doors, is the color Black, 100 in engine power,
      *  and engine is off by default.
      */
+    public Volvo240(Color color){
+        super(4, 100, color, "Volvo240");
+        stopEngine();
+    }
+
     public Volvo240(){
         super(4, 100, Color.black, "Volvo240");
         stopEngine();
