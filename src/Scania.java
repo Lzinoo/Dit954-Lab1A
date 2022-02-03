@@ -18,10 +18,6 @@ public class Scania extends Cars {
         return platformAngle;
     }
 
-    public double speedFactor() {
-        return getEnginePower() * 0.01;
-    }
-
     /**
      * Checks so that the platform is not up then passes amount to the regular gas method.
      * @param amount The increase in speed from 0 (inclusive) to 1 (inclusive).

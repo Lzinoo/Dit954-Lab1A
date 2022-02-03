@@ -20,6 +20,7 @@ public class Volvo240 extends Cars {
      * and decrementSpeed. Value changes depending on value of <i>trimFactor</i>.
      * @return New speedFactor.
      */
+    @Override
     public double speedFactor(){
         return getEnginePower() * 0.01 * trimFactor;
     }

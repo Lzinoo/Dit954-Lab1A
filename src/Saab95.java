@@ -35,6 +35,7 @@ public class Saab95 extends Cars {
      * and decrementSpeed. Value changes depending on the state of <i>turboOn</i>.
      * @return New speedFactor.
      */
+    @Override
     public double speedFactor(){
         double turbo = 1;
         if(turboOn) turbo = 1.3;
