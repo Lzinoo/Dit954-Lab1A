@@ -125,7 +125,7 @@ public abstract class Cars implements Movable {
      *
      * @param x The new X-axis value.
      */
-    private void setX(double x) {
+    protected void setX(double x) {
         this.x = x;
     }
 
@@ -134,7 +134,7 @@ public abstract class Cars implements Movable {
      *
      * @param y The new Y-axis value.
      */
-    private void setY(double y) {
+    protected void setY(double y) {
         this.y = y;
     }
 
@@ -152,7 +152,7 @@ public abstract class Cars implements Movable {
      *
      * @param dir The new direction of the car.
      */
-    private void setDir(direction dir) {
+    protected void setDir(direction dir) {
         this.dir = dir;
     }
 
@@ -193,9 +193,11 @@ public abstract class Cars implements Movable {
     }
 
     /**
-     * Am abstract method used in calculating the car's currentSpeed
+     * A method used in calculating the car's currentSpeed
      */
-    public abstract double speedFactor();
+    public double speedFactor() {
+        return getEnginePower() * 0.01;
+    }
 
     /**
      * Method to move the car along the X or Y axis depending on the
