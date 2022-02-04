@@ -1,5 +1,6 @@
 
 import java.awt.*;
+import java.util.ArrayDeque;
 import java.util.Deque;
 
 /**
@@ -22,6 +23,7 @@ public class Transport extends Cars {
         platformIsDown = false;
         stopEngine();
         carCapacity = maxCapacity;
+        loadedCars = new ArrayDeque<Cars>();
     }
 
     /**
@@ -58,24 +60,28 @@ public class Transport extends Cars {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case SOUTH:
                     if (carInput.getY() - this.getY() <= 10
                             && Math.abs(this.getX() - carInput.getX()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case EAST:
                     if (this.getX() - carInput.getX() <= 10
                             && Math.abs(this.getY() - carInput.getY()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case WEST:
                     if (carInput.getX() - this.getX() <= 10
                             && Math.abs(this.getY() - carInput.getY()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
             }
         }
     }
@@ -137,6 +143,10 @@ public class Transport extends Cars {
             super.gas(amount);
     }
 
+    /**
+     * Gets the number of cars currently mounted on the transport
+     * @return The number of cars currently in the transport
+     */
     public int getNumberOfMountedCars() {
         return loadedCars.size();
     }

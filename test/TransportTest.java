@@ -23,7 +23,13 @@ class TransportTest {
 
     @Test
     public void canCarBeLoaded() {
-        testTransport.stopEngine();
+        testTransport.lowerPlatform();
+        testTransport.mountCar(testSaab);
+        assert (testTransport.getNumberOfMountedCars() == 1);
+    }
+
+    @Test
+    public void canCarBeDismounted() {
         testTransport.lowerPlatform();
         testTransport.mountCar(testSaab);
         assert (testTransport.dismountCar() == testSaab);
