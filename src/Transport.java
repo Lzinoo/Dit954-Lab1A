@@ -1,9 +1,6 @@
 import java.awt.*;
 import java.util.Deque;
 
-/**
-* Transport class
-*/
 public class Transport extends Cars {
 
     private boolean platformIsDown;

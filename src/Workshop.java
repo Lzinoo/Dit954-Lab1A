@@ -1,48 +1,33 @@
 import java.util.ArrayList;
-
-/** Workshop class
- * @param <T> The type of Cars allowed in the workshop. Superclass <i>Cars</i> for all cars.
+/**
+ * Workshop class.
  */
-public class Workshop <T> {
+public class Workshop<T>{
 
-    private int max; // Max stored cars
-    T type;
-    private ArrayList<T> storeCars = new ArrayList<T>();
+    private int maxLoad; // Max number of cars.
+    private int currentLoad; // Current number of cars.
+    private ArrayList<Cars> storedCars;
 
-    /** A Workshop object. Allows storage of Cars - or a specific subtype of Cars.
-     * @param max Max number of cars allowed in storage.
-     */
-    public Workshop(int max) {
-        this.max = max;
+    public Workshop(int maxLoad, Class<T> type){
+        this.maxLoad = maxLoad;
+        if(type!=null){} // Set storedCars to specified class.
+        else{} // Else allow all Cars.
     }
 
-
-    /** Adds a car to the workshop if there is enough room.
-     * @param Car the car to be added.
-     */
-    public void loadCar (T Car) {
-        if (storeCars.size() != max) {
-            storeCars.add(Car);
-        }
+    public int getMaxLoad() {
+        return maxLoad;
     }
 
-    /** Returns/takes out a specified car from the workshop.
-     * @param car The car to be searched for.
-     * @return The found car. Null if not found.
-     */
-    public T takeOutCar (T car) {
-
-        T t = null;
-
-        for (T c : storeCars) {
-            if (c.equals(car)) {
-
-                t = car;
-                storeCars.remove(car);
-                break;
-            }
-        }
-        return t;
+    public int getCurrentLoad() {
+        return currentLoad;
     }
 
+    public void addCar(Cars car){
+        if(currentLoad<maxLoad) // TODO: "&& carType allowed"
+            storedCars.add(car);
+    }
+
+    public Cars getCar(){
+        return null;
+    }
 }
