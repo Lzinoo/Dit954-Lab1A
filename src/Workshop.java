@@ -30,7 +30,7 @@ public class Workshop <T> {
      * @param car The car to be searched for.
      * @return The found car. Null if not found.
      */
-    public T onLoadWorkshop (T car) {
+    public T takeOutCar (T car) {
 
         T t = null;
 
@@ -38,6 +38,7 @@ public class Workshop <T> {
             if (c.equals(car)) {
 
                 t = car;
+                storeCars.remove(car);
                 break;
             }
         }
