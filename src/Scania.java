@@ -1,9 +1,16 @@
 import java.awt.*;
 
+/**
+ * Scania class
+ */
 public class Scania extends Cars {
 
     private double platformAngle;
 
+    /**
+     * A Scania object is a subtype of Cars - Has 2 doors, is the color White, has 90 engine power
+     * , has a trailer with default angle 0, and engine is off by default.
+     */
     public Scania() {
         super(2, 90, Color.white, "Scania");
         platformAngle = 0;
