@@ -2,8 +2,8 @@ import java.awt.*;
 import java.util.Deque;
 
 /**
- * Transport class
- */
+* Transport class
+*/
 public class Transport extends Cars {
 
     private boolean platformIsDown;
@@ -11,10 +11,9 @@ public class Transport extends Cars {
     private int carCapacity;
 
     /**
-     * A Transport object is a subtype of Cars - Has 2 doors, an enginePower of 90.
-     * The platform is up by default. The engine is off by default. The Transport object can load and transport other
+     * A Transport object is a subtype of cars that has 2 doors, an enginePower of 90.
+     * The platform is up by default. The Transport object can load and transport other
      * objects of type cars except for type Transport.
-     * @param maxCapacity The max number of cars allowed in the transporter.
      */
     public Transport (int maxCapacity) {
         super(2, 90, Color.white, "Transporter");
