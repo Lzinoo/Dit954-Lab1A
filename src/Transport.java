@@ -1,6 +1,11 @@
+
 import java.awt.*;
+import java.util.ArrayDeque;
 import java.util.Deque;
 
+/**
+ * Transport class
+ */
 public class Transport extends Cars {
 
     private boolean platformIsDown;
@@ -11,12 +16,14 @@ public class Transport extends Cars {
      * A Transport object is a subtype of cars that has 2 doors, an enginePower of 90.
      * The platform is up by default. The Transport object can load and transport other
      * objects of type cars except for type Transport.
+     *
      */
     public Transport (int maxCapacity) {
         super(2, 90, Color.white, "Transporter");
         platformIsDown = false;
         stopEngine();
         carCapacity = maxCapacity;
+        loadedCars = new ArrayDeque<Cars>();
     }
 
     /**
@@ -53,24 +60,28 @@ public class Transport extends Cars {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case SOUTH:
                     if (carInput.getY() - this.getY() <= 10
                             && Math.abs(this.getX() - carInput.getX()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case EAST:
                     if (this.getX() - carInput.getX() <= 10
                             && Math.abs(this.getY() - carInput.getY()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
                 case WEST:
                     if (carInput.getX() - this.getX() <= 10
                             && Math.abs(this.getY() - carInput.getY()) <= 5) {
                         loadedCars.add(carInput);
                         updatePosition();
                     }
+                    break;
             }
         }
     }
@@ -130,6 +141,14 @@ public class Transport extends Cars {
     public void gas(double amount) {
         if (!platformIsDown)
             super.gas(amount);
+    }
+
+    /**
+     * Gets the number of cars currently mounted on the transport
+     * @return The number of cars currently in the transport
+     */
+    public int getNumberOfMountedCars() {
+        return loadedCars.size();
     }
 
     /**

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 /** Workshop class
  * @param <T> The type of Cars allowed in the workshop. Superclass <i>Cars</i> for all cars.
  */
-public class Workshop <T> {
+public class Workshop <T extends Cars> {
 
     private int max; // Max stored cars
     T type;
