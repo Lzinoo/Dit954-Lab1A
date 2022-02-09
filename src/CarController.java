@@ -30,6 +30,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(new Scania());
+        cc.cars.add(new Saab95());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -44,7 +46,7 @@ public class CarController {
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             for (Cars car : cars) {
-                car.move();
+                wallDetection(car);
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
                 frame.drawPanel.moveit(x, y);
@@ -54,12 +56,44 @@ public class CarController {
         }
     }
 
+    //Detects if the car hits or goes past the wall
+    void wallDetection(Cars car){
+        double currentX,currentY;
+        currentX = car.getX();
+        currentY = car.getY();
+        int bottomBorder = frame.drawPanel.getHeight();// todo: minus height of car
+        int rightBorder  = frame.getWidth(); // todo: minus width of car
+        if(currentX<0 || currentX>rightBorder)
+            reverseDirection(car);
+        else if (currentY<0 || currentY>bottomBorder)
+            reverseDirection(car);
+
+        car.move();
+    }
+
+    //Reverse the direction of the car
+    void reverseDirection(Cars car){
+        switch(car.getDir()){
+            case NORTH -> car.setDir(Cars.direction.SOUTH);
+            case EAST -> car.setDir(Cars.direction.WEST);
+            case WEST -> car.setDir(Cars.direction.EAST);
+            case SOUTH -> car.setDir(Cars.direction.NORTH);
+        }
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Cars car : cars
-                ) {
+        for (Cars car : cars) {
             car.gas(gas);
+        }
+    }
+
+    // Calls the brake method for each car once
+    void brake(int amount){
+        double brake = ((double) amount) / 100;
+        for (Cars car : cars){
+            car.brake(brake);
         }
     }
 }
