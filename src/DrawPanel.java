@@ -10,14 +10,14 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image
-    BufferedImage carImage;
+    BufferedImage[] carImage = new BufferedImage[3];
     // To keep track of a single cars position
-    Point carPoint = new Point();
+    Point[] carPoints = new Point[3];
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y){
-        carPoint.x = x;
-        carPoint.y = y;
+    void moveit(int index, int x, int y){
+        carPoints[index].x = x;
+        carPoints[index].y = y;
     }
 
     // Initializes the panel and reads the images
@@ -25,6 +25,9 @@ public class DrawPanel extends JPanel{
         this.setDoubleBuffered(true);
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
+        this.carPoints[0] = new Point(0,0);
+        this.carPoints[1] = new Point(0,100);
+        this.carPoints[2] = new Point(0,200);
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
@@ -34,7 +37,9 @@ public class DrawPanel extends JPanel{
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
 
-            carImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            carImage[0] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+            carImage[1] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            carImage[2] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
         } catch (IOException ex)
         {
             ex.printStackTrace();
@@ -47,6 +52,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(carImage, carPoint.x, carPoint.y, null);
+        for(int i = 0; i < 3; i++){
+            g.drawImage(carImage[i],carPoints[i].x, carPoints[i].y, null);
+        }
     }
 }

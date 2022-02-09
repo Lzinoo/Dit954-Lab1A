@@ -49,11 +49,33 @@ public class CarController {
                 wallDetection(car);
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(x, y);
+                frame.drawPanel.moveit(cars.indexOf(car), x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
         }
+    }
+
+    // Get a list of all Saabs in list cars.
+    private ArrayList<Saab95> getAllSaab(){
+        ArrayList<Saab95> saabs = new ArrayList<Saab95>();
+        for(Cars car : cars){
+            if(car instanceof Saab95){
+                saabs.add((Saab95) car);
+            }
+        }
+        return saabs;
+    }
+
+    // Get a list of all Scanias in list cars.
+    private ArrayList<Scania> getAllScania(){
+        ArrayList<Scania> scans = new ArrayList<Scania>();
+        for(Cars car : cars){
+            if(car instanceof Scania){
+                scans.add((Scania) car);
+            }
+        }
+        return scans;
     }
 
     //Detects if the car hits or goes past the wall
@@ -94,6 +116,36 @@ public class CarController {
         double brake = ((double) amount) / 100;
         for (Cars car : cars){
             car.brake(brake);
+        }
+    }
+
+    // Calls setTurboOn only for Saabs in cars.
+    void turboOn(){
+        for(Saab95 car : getAllSaab()){
+            car.setTurboOn();
+        }
+    }
+
+    // Calls setTurboOff only for Saabs in cars.
+    void turboOff(){
+        for(Saab95 car : getAllSaab()){
+            car.setTurboOff();
+        }
+    }
+
+    // Calls increaseAngle only for Scania in cars.
+    void increaseAngle(int amount){
+        double increase = ((double) amount) / 100;
+        for(Scania car : getAllScania()){
+            car.increaseAngle(increase);
+        }
+    }
+
+    //Calls decreaseAngle only for Scania in cars.
+    void decreaseAngle(int amount){
+        double decrease = ((double) amount) / 100;
+        for(Scania car : getAllScania()){
+            car.decreaseAngle(decrease);
         }
     }
 }
