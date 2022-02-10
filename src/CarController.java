@@ -29,9 +29,9 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Scania());
-        cc.cars.add(new Saab95());
+        cc.cars.add(new Volvo240(0,0));
+        cc.cars.add(new Scania(0, 100));
+        cc.cars.add(new Saab95(0, 200));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -87,7 +87,7 @@ public class CarController {
         int rightBorder  = frame.getWidth(); // todo: minus width of car
         if(currentX<0 || currentX>rightBorder)
             reverseDirection(car);
-        else if (currentY<0 || currentY>bottomBorder)
+        else if (currentY<0 || currentY >bottomBorder)
             reverseDirection(car);
 
         car.move();
