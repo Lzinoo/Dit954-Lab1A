@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -80,14 +81,16 @@ public class CarController {
 
     //Detects if the car hits or goes past the wall
     private void wallDetection(Vehicles car){
+        int imageHeight = frame.drawPanel.carImage[0].getHeight();
+        int imageWidth = frame.drawPanel.carImage[0].getWidth();
         double currentX,currentY;
         currentX = car.getX();
         currentY = car.getY();
         int bottomBorder = frame.drawPanel.getHeight();// todo: minus height of car
         int rightBorder  = frame.getWidth(); // todo: minus width of car
-        if(currentX<0 || currentX>rightBorder)
+        if(currentX<0 || currentX + imageWidth >rightBorder)
             reverseDirection(car);
-        else if (currentY<0 || currentY >bottomBorder)
+        else if (currentY<0 || currentY + imageHeight >bottomBorder)
             reverseDirection(car);
 
         car.move();
