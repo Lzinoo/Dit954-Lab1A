@@ -119,6 +119,18 @@ public class CarController {
         }
     }
 
+    void startAllEngines() {
+        for (Vehicles car : cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopAllEngines() {
+        for (Vehicles car : cars) {
+            car.stopEngine();
+        }
+    }
+
     // Calls setTurboOn only for Saabs in cars.
     void turboOn(){
         for(Saab95 car : getAllSaab()){
