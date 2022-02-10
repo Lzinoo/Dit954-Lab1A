@@ -83,11 +83,13 @@ public class CarController {
     private void wallDetection(Vehicles car){
         int imageHeight = frame.drawPanel.carImage[0].getHeight();
         int imageWidth = frame.drawPanel.carImage[0].getWidth();
+        int bottomBorder = frame.drawPanel.getHeight();
+        int rightBorder  = frame.getWidth();
+
         double currentX,currentY;
         currentX = car.getX();
         currentY = car.getY();
-        int bottomBorder = frame.drawPanel.getHeight();// todo: minus height of car
-        int rightBorder  = frame.getWidth(); // todo: minus width of car
+
         if(currentX<0 || currentX + imageWidth >rightBorder)
             reverseDirection(car);
         else if (currentY<0 || currentY + imageHeight >bottomBorder)
@@ -122,12 +124,14 @@ public class CarController {
         }
     }
 
+    // Calls the startEngine method for each car once
     void startAllEngines() {
         for (Vehicles car : cars) {
             car.startEngine();
         }
     }
 
+    // Calls the stopEngine method for each car once
     void stopAllEngines() {
         for (Vehicles car : cars) {
             car.stopEngine();
