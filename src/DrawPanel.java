@@ -2,6 +2,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.Buffer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -10,8 +11,10 @@ import javax.swing.*;
 public class DrawPanel extends JPanel{
 
     // Just a single image
+    //BufferedImage[] carImage = new BufferedImage[3];
     BufferedImage[] carImage = new BufferedImage[3];
     // To keep track of a single cars position
+    //Point[] carPoints = new Point[3];
     Point[] carPoints = new Point[3];
 
     // TODO: Make this general for all cars
@@ -28,22 +31,23 @@ public class DrawPanel extends JPanel{
         this.carPoints[0] = new Point(0,0);
         this.carPoints[1] = new Point(0,100);
         this.carPoints[2] = new Point(0,200);
+
+
         // Print an error message in case file is not found with a try/catch block
         try {
             // You can remove the "pics" part if running outside of IntelliJ and
             // everything is in the same main folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
             // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
             // if you are starting in IntelliJ.
 
             carImage[0] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             carImage[1] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
             carImage[2] = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
-        } catch (IOException ex)
-        {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
+
 
     }
 

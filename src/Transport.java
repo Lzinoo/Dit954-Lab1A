@@ -6,7 +6,7 @@ import java.util.Deque;
 /**
  * Transport class
  */
-public class Transport extends Cars {
+public class Transport extends Trucks {
 
     private boolean platformIsDown;
     private Deque<Cars> loadedCars;
@@ -52,7 +52,7 @@ public class Transport extends Cars {
      * @param carInput Any vehicle of class Cars, except Transport, that will be loaded on to the Transport vehicle
      */
     public void mountCar(Cars carInput) {
-        if (platformIsDown && carInput.getClass() != Transport.class && loadedCars.size() < carCapacity) {
+        if (platformIsDown && loadedCars.size() < carCapacity) {
             switch (this.getDir()) {
                 case NORTH:
                     if (this.getY() - carInput.getY() <= 10
@@ -92,8 +92,8 @@ public class Transport extends Cars {
      * catch instead.
      * @return returns the car on the top of the stack, meaning the car that was last mounted to the transport.
      */
-    public Cars dismountCar() {
-        Cars unloadedCar;
+    public Vehicles dismountCar() {
+        Vehicles unloadedCar;
         if (platformIsDown) {
             unloadedCar = loadedCars.pop();
             unloadedCar.setDir(this.getDir());
@@ -155,7 +155,7 @@ public class Transport extends Cars {
      * Updates the positions of the loaded cars to the match the Transport
      */
     public void updatePosition() {
-        for (Cars car : loadedCars) {
+        for (Vehicles car : loadedCars) {
             car.setX(this.getX());
             car.setY(this.getY());
             car.setDir(this.getDir());

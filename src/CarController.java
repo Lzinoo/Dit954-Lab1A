@@ -21,7 +21,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Cars> cars = new ArrayList<>();
+    ArrayList<Vehicles> cars = new ArrayList<>();
 
     //methods:
 
@@ -45,11 +45,11 @@ public class CarController {
     * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Cars car : cars) {
+            for (Vehicles car : cars) {
                 wallDetection(car);
                 int x = (int) Math.round(car.getX());
                 int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(cars.indexOf(car), x, y);
+                frame.drawPanel.moveit(cars.indexOf(car),x, y);
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -59,7 +59,7 @@ public class CarController {
     // Get a list of all Saabs in list cars.
     private ArrayList<Saab95> getAllSaab(){
         ArrayList<Saab95> saabs = new ArrayList<Saab95>();
-        for(Cars car : cars){
+        for(Vehicles car : cars){
             if(car instanceof Saab95){
                 saabs.add((Saab95) car);
             }
@@ -70,7 +70,7 @@ public class CarController {
     // Get a list of all Scanias in list cars.
     private ArrayList<Scania> getAllScania(){
         ArrayList<Scania> scans = new ArrayList<Scania>();
-        for(Cars car : cars){
+        for(Vehicles car : cars){
             if(car instanceof Scania){
                 scans.add((Scania) car);
             }
@@ -79,7 +79,7 @@ public class CarController {
     }
 
     //Detects if the car hits or goes past the wall
-    void wallDetection(Cars car){
+    private void wallDetection(Vehicles car){
         double currentX,currentY;
         currentX = car.getX();
         currentY = car.getY();
@@ -94,19 +94,19 @@ public class CarController {
     }
 
     //Reverse the direction of the car
-    void reverseDirection(Cars car){
+    private void reverseDirection(Vehicles car){
         switch(car.getDir()){
-            case NORTH -> car.setDir(Cars.direction.SOUTH);
-            case EAST -> car.setDir(Cars.direction.WEST);
-            case WEST -> car.setDir(Cars.direction.EAST);
-            case SOUTH -> car.setDir(Cars.direction.NORTH);
+            case NORTH -> car.setDir(Vehicles.direction.SOUTH);
+            case EAST -> car.setDir(Vehicles.direction.WEST);
+            case WEST -> car.setDir(Vehicles.direction.EAST);
+            case SOUTH -> car.setDir(Vehicles.direction.NORTH);
         }
     }
 
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Cars car : cars) {
+        for (Vehicles car : cars) {
             car.gas(gas);
         }
     }
@@ -114,7 +114,7 @@ public class CarController {
     // Calls the brake method for each car once
     void brake(int amount){
         double brake = ((double) amount) / 100;
-        for (Cars car : cars){
+        for (Vehicles car : cars){
             car.brake(brake);
         }
     }

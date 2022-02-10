@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 class WorkshopTest {
-    private Workshop<Cars> workshopAll;
+    private Workshop<Vehicles> workshopAll;
     private Workshop<Saab95> workshopSaab;
     private Saab95 saab;
     private Volvo240 volvo;
@@ -10,7 +10,7 @@ class WorkshopTest {
 
     @BeforeEach
     void init(){
-        workshopAll = new Workshop<Cars>(3);
+        workshopAll = new Workshop<Vehicles>(3);
         workshopSaab = new Workshop<Saab95>(3);
         saab = new Saab95();
         volvo = new Volvo240();

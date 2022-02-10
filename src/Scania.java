@@ -3,7 +3,7 @@ import java.awt.*;
 /**
  * Scania class
  */
-public class Scania extends Cars {
+public class Scania extends Trucks {
 
     private double platformAngle;
 

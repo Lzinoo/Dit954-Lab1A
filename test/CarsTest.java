@@ -1,8 +1,5 @@
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CarsTest {
     private Volvo240 testVolvo;
@@ -55,21 +52,21 @@ class CarsTest {
     public void doesCarMove() {
         testSaab.gas(1);
         testSaab.move();
-        assert(testSaab.getX() == 0 && testSaab.getY() != 0 && testSaab.getDir() == Cars.direction.NORTH);
+        assert(testSaab.getX() == 0 && testSaab.getY() != 0 && testSaab.getDir() == Vehicles.direction.NORTH);
     }
 
     //Checks so that turnLeft() changes the direction correctly
     @Test
     public void doesCarTurnLeft() {
         testVolvo.turnLeft();
-        assert (testVolvo.getDir() == Cars.direction.WEST);
+        assert (testVolvo.getDir() == Vehicles.direction.WEST);
     }
 
     //Checks so that turnRight() changes the direction correctly
     @Test
     public void doesCarTurnRight() {
         testVolvo.turnRight();
-        assert (testVolvo.getDir() == Cars.direction.EAST);
+        assert (testVolvo.getDir() == Vehicles.direction.EAST);
     }
 
 
