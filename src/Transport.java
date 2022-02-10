@@ -17,9 +17,25 @@ public class Transport extends Trucks {
      * The platform is up by default. The Transport object can load and transport other
      * objects of type cars except for type Transport.
      *
+     * @param maxCapacity The maximum capacity of the transport vehicle
+     * @param x_pos The position on the x-axis
+     * @param y_pos The position on the y-axis
+     */
+    public Transport (int maxCapacity, int x_pos, int y_pos) {
+        super(2, 90, Color.white, "Transporter", x_pos, y_pos);
+        platformIsDown = false;
+        stopEngine();
+        carCapacity = maxCapacity;
+        loadedCars = new ArrayDeque<Cars>();
+    }
+    /**
+     * A Transport object is a subtype of cars that has 2 doors, an enginePower of 90.
+     * The platform is up by default. The Transport object can load and transport other
+     * objects of type cars except for type Transport. Without any parameters the
+     * transport is placed at position (0,0).
      */
     public Transport (int maxCapacity) {
-        super(2, 90, Color.white, "Transporter");
+        super(2, 90, Color.white, "Transporter", 0, 0);
         platformIsDown = false;
         stopEngine();
         carCapacity = maxCapacity;

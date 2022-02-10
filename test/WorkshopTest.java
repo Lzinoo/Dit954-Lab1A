@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 class WorkshopTest {
     private Workshop<Vehicles> workshopAll;
     private Workshop<Saab95> workshopSaab;

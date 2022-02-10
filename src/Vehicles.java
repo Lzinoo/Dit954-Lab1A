@@ -27,14 +27,14 @@ public abstract class Vehicles implements Movable {
      * @param color The colour of the car
      * @param modelName The name of the model of the car
      */
-    public Vehicles(int nrDoors, double enginePower, Color color, String modelName){
+    public Vehicles(int nrDoors, double enginePower, Color color, String modelName, int x_pos, int y_pos){
         this.nrDoors = nrDoors;
         this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
+        this.x = x_pos;
+        this.y = y_pos;
 
-        x = 0;
-        y = 0;
         currentSpeed = 0;
         dir = direction.NORTH;
     }

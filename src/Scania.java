@@ -10,9 +10,23 @@ public class Scania extends Trucks {
     /**
      * A Scania object is a subtype of Cars - Has 2 doors, is the color White, has 90 engine power
      * , has a trailer with default angle 0, and engine is off by default.
+     *
+     * @param x_pos The position on the x-axis
+     * @param y_pos The position on the y-axis
+     */
+    public Scania(int x_pos, int y_pos) {
+        super(2, 90, Color.white, "Scania", x_pos, y_pos);
+        platformAngle = 0;
+        stopEngine();
+    }
+
+    /**
+     * A Scania object is a subtype of Cars - Has 2 doors, is the color White, has 90 engine power
+     * , has a trailer with default angle 0, and engine is off by default. Without any parameters the
+     * object is placed at a default position of (0,0).
      */
     public Scania() {
-        super(2, 90, Color.white, "Scania");
+        super(2, 90, Color.white, "Scania", 0,0);
         platformAngle = 0;
         stopEngine();
     }

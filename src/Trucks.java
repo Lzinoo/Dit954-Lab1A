@@ -15,7 +15,7 @@ public class Trucks extends Vehicles{
      * @param color The colour of the car
      * @param modelName The name of the model of the car
      */
-    public Trucks(int nrDoors, double enginePower, Color color, String modelName){
-        super(nrDoors,enginePower,color,modelName);
+    public Trucks(int nrDoors, double enginePower, Color color, String modelName, int x, int y){
+        super(nrDoors,enginePower,color,modelName, x, y);
     }
 }
