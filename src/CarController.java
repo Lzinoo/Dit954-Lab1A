@@ -57,28 +57,6 @@ public class CarController {
         }
     }
 
-    // Get a list of all Saabs in list cars.
-    private ArrayList<Saab95> getAllSaab(){
-        ArrayList<Saab95> saabs = new ArrayList<Saab95>();
-        for(Vehicles car : cars){
-            if(car instanceof Saab95){
-                saabs.add((Saab95) car);
-            }
-        }
-        return saabs;
-    }
-
-    // Get a list of all Scanias in list cars.
-    private ArrayList<Scania> getAllScania(){
-        ArrayList<Scania> scans = new ArrayList<Scania>();
-        for(Vehicles car : cars){
-            if(car instanceof Scania){
-                scans.add((Scania) car);
-            }
-        }
-        return scans;
-    }
-
     //Detects if the car hits or goes past the wall
     private void wallDetection(Vehicles car){
         int imageHeight = frame.drawPanel.carImage[0].getHeight();
@@ -140,31 +118,35 @@ public class CarController {
 
     // Calls setTurboOn only for Saabs in cars.
     void turboOn(){
-        for(Saab95 car : getAllSaab()){
-            car.setTurboOn();
+        for(Vehicles car : cars){
+            if(car instanceof Saab95)
+                ((Saab95) car).setTurboOn();
         }
     }
 
     // Calls setTurboOff only for Saabs in cars.
     void turboOff(){
-        for(Saab95 car : getAllSaab()){
-            car.setTurboOff();
+        for(Vehicles car : cars){
+            if(car instanceof Saab95)
+                ((Saab95) car).setTurboOff();
         }
     }
 
     // Calls increaseAngle only for Scania in cars.
     void increaseAngle(int amount){
-        double increase = ((double) amount) / 100;
-        for(Scania car : getAllScania()){
-            car.increaseAngle(increase);
+        double increaseAmount = ((double) amount) / 100;
+        for(Vehicles car : cars){
+            if(car instanceof Scania)
+                ((Scania) car).increaseAngle(increaseAmount);
         }
     }
 
     //Calls decreaseAngle only for Scania in cars.
     void decreaseAngle(int amount){
-        double decrease = ((double) amount) / 100;
-        for(Scania car : getAllScania()){
-            car.decreaseAngle(decrease);
+        double decreaseAmount = ((double) amount) / 100;
+        for(Vehicles car : cars){
+            if(car instanceof Scania)
+             ((Scania) car).decreaseAngle(decreaseAmount);
         }
     }
 }
