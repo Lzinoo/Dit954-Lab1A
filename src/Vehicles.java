@@ -8,7 +8,6 @@ import java.awt.*;
 public abstract class Vehicles implements Movable {
 
     private int nrDoors; // Number of doors on the car
-    private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
@@ -23,13 +22,11 @@ public abstract class Vehicles implements Movable {
      * When initiated the car starts at (0,0) with a speed of 0 facing North
      *
      * @param nrDoors The number of doors
-     * @param enginePower The power of the engine
      * @param color The colour of the car
      * @param modelName The name of the model of the car
      */
-    public Vehicles(int nrDoors, double enginePower, Color color, String modelName, int x_pos, int y_pos){
+    public Vehicles(int nrDoors, Color color, String modelName, int x_pos, int y_pos){
         this.nrDoors = nrDoors;
-        this.enginePower = enginePower;
         this.color = color;
         this.modelName = modelName;
         this.x = x_pos;
@@ -55,15 +52,6 @@ public abstract class Vehicles implements Movable {
      */
     public int getNrDoors() {
         return nrDoors;
-    }
-
-    /**
-     * Returns the current enginePower of the car.
-     *
-     * @return The current enginePower of the car.
-     */
-    public double getEnginePower() {
-        return enginePower;
     }
 
     /**
@@ -170,13 +158,15 @@ public abstract class Vehicles implements Movable {
         currentSpeed = 0;
     }
 
+    public abstract double enginePower();
+
     /**
      * A method to increase the currentSpeed of the car.
      *
      * @param amount How much the speed should be increased.
      */
     private void incrementSpeed(double amount) {
-        double increasedSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, getEnginePower());
+        double increasedSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower());
         if (increasedSpeed > getCurrentSpeed())
             setCurrentSpeed(increasedSpeed);
     }
@@ -196,7 +186,7 @@ public abstract class Vehicles implements Movable {
      * A method used in calculating the car's currentSpeed
      */
     public double speedFactor() {
-        return getEnginePower() * 0.01;
+        return enginePower() * 0.01;
     }
 
     /**

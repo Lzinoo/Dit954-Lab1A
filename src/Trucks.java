@@ -8,6 +8,7 @@ public class Trucks extends Vehicles implements Platform{
     private double enginePower;
     private Color color;
     private String modelName;
+    private Engine engine;
 
     /** A truck object, has some sort of carriage (e.g. trailer).
      * @param nrDoors The number of doors
@@ -15,8 +16,9 @@ public class Trucks extends Vehicles implements Platform{
      * @param color The colour of the car
      * @param modelName The name of the model of the car
      */
-    public Trucks(int nrDoors, double enginePower, Color color, String modelName, int x, int y){
-        super(nrDoors,enginePower,color,modelName, x, y);
+    public Trucks(int nrDoors, Engine engine, Color color, String modelName, int x, int y){
+        super(nrDoors,color,modelName, x, y);
+        this.engine = engine;
     }
 
     /** Get the angle of the platform for the Truck object.
@@ -41,5 +43,10 @@ public class Trucks extends Vehicles implements Platform{
     @Override
     public void lowerPlatform() {
 
+    }
+
+    @Override
+    public double enginePower() {
+        return 0;
     }
 }

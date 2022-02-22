@@ -15,7 +15,7 @@ public class Scania extends Trucks {
      * @param y_pos The position on the y-axis
      */
     public Scania(int x_pos, int y_pos) {
-        super(2, 90, Color.white, "Scania", x_pos, y_pos);
+        super(2, new Engine(90), Color.white, "Scania", x_pos, y_pos);
         platformAngle = 0;
         stopEngine();
     }
@@ -26,7 +26,7 @@ public class Scania extends Trucks {
      * object is placed at a default position of (0,0).
      */
     public Scania() {
-        super(2, 90, Color.white, "Scania", 0,0);
+        super(2, new Engine(90), Color.white, "Scania", 0,0);
         platformAngle = 0;
         stopEngine();
     }

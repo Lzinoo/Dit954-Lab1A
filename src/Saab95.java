@@ -15,7 +15,7 @@ public class Saab95 extends Cars {
      *  @param y_pos The position on the y-axis
      */
     public Saab95(int x_pos, int y_pos){
-        super(2,125,Color.red,"Saab95", x_pos, y_pos);
+        super(2,new Engine(125),Color.red,"Saab95", x_pos, y_pos);
         turboOn = false;
         stopEngine();
     }
@@ -26,7 +26,7 @@ public class Saab95 extends Cars {
      * a position at (0,0).
      */
     public Saab95() {
-        super(2,125, Color.red,"Saab95", 0, 0);
+        super(2, new Engine(125), Color.red,"Saab95", 0, 0);
         turboOn = false;
         stopEngine();
     }

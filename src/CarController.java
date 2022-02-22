@@ -18,7 +18,7 @@ public class CarController {
     //CarView frame;
     // A list of cars, modify if needed
     ArrayList<Vehicles> cars = new ArrayList<>();
-
+    ArrayList<Scania> scaniaCars = new ArrayList<>();
     //methods:
 
     public static void main(String[] args) {
@@ -27,6 +27,7 @@ public class CarController {
 
         cc.cars.add(new Volvo240(0,0));
         cc.cars.add(new Scania(0, 100));
+        cc.scaniaCars.add(new Scania(0, 100));
         cc.cars.add(new Saab95(0, 200));
 
         // Start a new view and send a reference of self
@@ -89,21 +90,19 @@ public class CarController {
         }
     }
 
-    // Calls increaseAngle only for Scania in cars.
+    // Calls increaseAngle only for Scania vehicles.
     void increaseAngle(int amount){
         double increaseAmount = ((double) amount) / 100;
-        for(Vehicles car : cars){
-            if(car instanceof Scania)
-                ((Scania) car).raisePlatform(increaseAmount);
+        for(Trucks car : scaniaCars){
+            car.raisePlatform();
         }
     }
 
-    //Calls decreaseAngle only for Scania in cars.
+    //Calls decreaseAngle only for Scania vehicles.
     void decreaseAngle(int amount){
         double decreaseAmount = ((double) amount) / 100;
-        for(Vehicles car : cars){
-            if(car instanceof Scania)
-             ((Scania) car).lowerPlatform(decreaseAmount);
+        for(Trucks car : scaniaCars){
+            car.lowerPlatform();
         }
     }
 }

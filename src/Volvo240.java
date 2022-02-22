@@ -15,7 +15,7 @@ public class Volvo240 extends Cars {
      * @param y_pos The position on the y-axis
      */
     public Volvo240(int x_pos, int y_pos){
-        super(4, 100, Color.black, "Volvo240", x_pos, y_pos);
+        super(4, new Engine(100), Color.black, "Volvo240", x_pos, y_pos);
         stopEngine();
     }
 
@@ -24,7 +24,7 @@ public class Volvo240 extends Cars {
      * and engine is off by default. Without parameters assumes default position at (0,0).
      */
     public Volvo240() {
-        super(4,100, Color.black, "Volvo240", 0, 0);
+        super(4,new Engine(100), Color.black, "Volvo240", 0, 0);
         stopEngine();
     }
 

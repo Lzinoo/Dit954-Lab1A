@@ -22,7 +22,7 @@ public class Transport extends Trucks {
      * @param y_pos The position on the y-axis
      */
     public Transport (int maxCapacity, int x_pos, int y_pos) {
-        super(2, 90, Color.white, "Transporter", x_pos, y_pos);
+        super(2, new Engine(90), Color.white, "Transporter", x_pos, y_pos);
         platformIsDown = false;
         stopEngine();
         carCapacity = maxCapacity;
@@ -35,7 +35,7 @@ public class Transport extends Trucks {
      * transport is placed at position (0,0).
      */
     public Transport (int maxCapacity) {
-        super(2, 90, Color.white, "Transporter", 0, 0);
+        super(2, new Engine(90), Color.white, "Transporter", 0, 0);
         platformIsDown = false;
         stopEngine();
         carCapacity = maxCapacity;
