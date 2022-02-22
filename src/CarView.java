@@ -16,6 +16,11 @@ import java.awt.event.ActionListener;
 public class CarView extends JFrame{
     private static final int X = 800;
     private static final int Y = 800;
+    // The delay (ms) corresponds to 20 updates a sec (hz)
+    private final int delay = 50;
+    // The timer is started with an listener (see below) that executes the statements
+    // each step between delays.
+    private Timer timer = new Timer(delay, new TimerListener());
 
     // The controller member
     CarController carC;
@@ -42,7 +47,42 @@ public class CarView extends JFrame{
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
+        // Start the timer
+        timer.start();
         initComponents(framename);
+    }
+    /* Each step the TimerListener moves all the cars in the list and tells the
+     * view to update its images. Change this method to your needs.
+     * */
+    private class TimerListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            for (Vehicles car : carC.cars) {
+                wallDetection(car);
+                int x = (int) Math.round(car.getX());
+                int y = (int) Math.round(car.getY());
+                drawPanel.moveit(carC.cars.indexOf(car),x, y);
+                // repaint() calls the paintComponent method of the panel
+                drawPanel.repaint();
+            }
+        }
+    }
+    //Detects if the car hits or goes past the wall
+    private void wallDetection(Vehicles car){
+        int imageHeight = drawPanel.carImage[0].getHeight();
+        int imageWidth = drawPanel.carImage[0].getWidth();
+        int bottomBorder = drawPanel.getHeight();
+        int rightBorder  = getWidth();
+
+        double currentX,currentY;
+        currentX = car.getX();
+        currentY = car.getY();
+
+        if(currentX<0 || currentX + imageWidth >rightBorder)
+            carC.reverseDirection(car);
+        else if (currentY<0 || currentY + imageHeight >bottomBorder)
+            carC.reverseDirection(car);
+
+        car.move();
     }
 
     // Sets everything in place and fits everything

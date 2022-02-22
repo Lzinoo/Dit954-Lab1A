@@ -13,14 +13,9 @@ import java.util.ArrayList;
 public class CarController {
     // member fields:
 
-    // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
-    // The timer is started with an listener (see below) that executes the statements
-    // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
-    CarView frame;
+    //CarView frame;
     // A list of cars, modify if needed
     ArrayList<Vehicles> cars = new ArrayList<>();
 
@@ -35,49 +30,11 @@ public class CarController {
         cc.cars.add(new Saab95(0, 200));
 
         // Start a new view and send a reference of self
-        cc.frame = new CarView("CarSim 1.0", cc);
-
-        // Start the timer
-        cc.timer.start();
-    }
-
-    /* Each step the TimerListener moves all the cars in the list and tells the
-    * view to update its images. Change this method to your needs.
-    * */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicles car : cars) {
-                wallDetection(car);
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                frame.drawPanel.moveit(cars.indexOf(car),x, y);
-                // repaint() calls the paintComponent method of the panel
-                frame.drawPanel.repaint();
-            }
-        }
-    }
-
-    //Detects if the car hits or goes past the wall
-    private void wallDetection(Vehicles car){
-        int imageHeight = frame.drawPanel.carImage[0].getHeight();
-        int imageWidth = frame.drawPanel.carImage[0].getWidth();
-        int bottomBorder = frame.drawPanel.getHeight();
-        int rightBorder  = frame.getWidth();
-
-        double currentX,currentY;
-        currentX = car.getX();
-        currentY = car.getY();
-
-        if(currentX<0 || currentX + imageWidth >rightBorder)
-            reverseDirection(car);
-        else if (currentY<0 || currentY + imageHeight >bottomBorder)
-            reverseDirection(car);
-
-        car.move();
+        //cc.frame = new CarView("CarSim 1.0", cc);
     }
 
     //Reverse the direction of the car
-    private void reverseDirection(Vehicles car){
+    public void reverseDirection(Vehicles car){
         switch(car.getDir()){
             case NORTH -> car.setDir(Vehicles.direction.SOUTH);
             case EAST -> car.setDir(Vehicles.direction.WEST);
@@ -137,7 +94,7 @@ public class CarController {
         double increaseAmount = ((double) amount) / 100;
         for(Vehicles car : cars){
             if(car instanceof Scania)
-                ((Scania) car).increaseAngle(increaseAmount);
+                ((Scania) car).raisePlatform(increaseAmount);
         }
     }
 
@@ -146,7 +103,7 @@ public class CarController {
         double decreaseAmount = ((double) amount) / 100;
         for(Vehicles car : cars){
             if(car instanceof Scania)
-             ((Scania) car).decreaseAngle(decreaseAmount);
+             ((Scania) car).lowerPlatform(decreaseAmount);
         }
     }
 }

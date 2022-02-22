@@ -17,7 +17,7 @@ class ScaniaTest {
      */
     @Test
     void canScaniaDrivePlatformUp() {
-        testScania.increaseAngle(1);
+        testScania.raisePlatform(1);
         testScania.gas(1);
         assert (testScania.getCurrentSpeed() == 0);
     }
@@ -28,7 +28,7 @@ class ScaniaTest {
     @Test
     void canPlatformAngleIncreaseWhenDriving() {
         testScania.gas(1);
-        testScania.increaseAngle(1);
+        testScania.raisePlatform(1);
         assert (testScania.getPlatformAngle() == 0);
     }
 }

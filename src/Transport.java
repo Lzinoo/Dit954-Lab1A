@@ -46,6 +46,7 @@ public class Transport extends Trucks {
      * A method that sets the platform to the down position. Only works if the Transport
      * has a speed of 0.
      */
+    @Override
     public void lowerPlatform() {
         if (getCurrentSpeed() == 0)
             platformIsDown = true;
@@ -56,8 +57,17 @@ public class Transport extends Trucks {
     /**
      * Raises the platform, sets platformIsDown to false.
      */
+    @Override
     public void raisePlatform() {
         platformIsDown = false;
+    }
+
+    /** Transport object specific angle - is either 0 degrees or 70.
+     * @return 0 if platform is down, else 70.
+     */
+    @Override
+    public double getPlatformAngle(){
+        return platformIsDown ? 0 : 70;
     }
 
     /**

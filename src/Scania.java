@@ -55,7 +55,7 @@ public class Scania extends Trucks {
      * If the truck is not moving it will increase the angle to a maximum of 70.
      * @param amount The increase in angle from 0 (exclusive) to 1 (inclusive)
      */
-    public void increaseAngle(double amount) {
+    public void raisePlatform(double amount) {
         if (getCurrentSpeed() == 0) {
             if (amount > 0 && amount <= 1 && platformAngle + amount <= 70)
                 platformAngle += amount;
@@ -70,7 +70,7 @@ public class Scania extends Trucks {
      * even though it should never be above 0 when moving.
      * @param amount The decrease in angle from 0 (exclusive) to 1 (inclusive)
      */
-    public void decreaseAngle(double amount) {
+    public void lowerPlatform(double amount) {
         if (amount > 0 && amount <= 1 && platformAngle - amount >= 0)
             platformAngle -= amount;
         else
