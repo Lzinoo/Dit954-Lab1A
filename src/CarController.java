@@ -22,23 +22,6 @@ public class CarController {
     ArrayList<Saab95> saabCars = new ArrayList<>();
     //methods:
 
-    public static void main(String[] args) {
-        // Instance of this class
-        CarController cc = new CarController();
-
-        Scania scania = new Scania(0, 100);
-        Saab95 saab = new Saab95(0, 200);
-
-        cc.cars.add(new Volvo240(0,0));
-        cc.cars.add(scania);
-        cc.scaniaCars.add(scania);
-        cc.cars.add(saab);
-        cc.saabCars.add(saab);
-
-        // Start a new view and send a reference of self
-        //cc.frame = new CarView("CarSim 1.0", cc);
-    }
-
     //Reverse the direction of the car
     public void reverseDirection(Vehicles car){
         switch(car.getDir()){
