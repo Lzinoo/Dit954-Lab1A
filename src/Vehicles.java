@@ -18,6 +18,7 @@ public abstract class Vehicles implements Movable {
     private double x; // The car's position in the x-axis
     private double y; // The car's position in the y-axis
     private direction dir; // The direction the car is moving in
+    private State state;
 
     /**
      * The base constructor for the Car class
@@ -39,6 +40,7 @@ public abstract class Vehicles implements Movable {
 
         currentSpeed = 0;
         dir = direction.NORTH;
+        state = State.ACTIVE;
     }
 
     /**
@@ -49,6 +51,16 @@ public abstract class Vehicles implements Movable {
     public enum direction {
         NORTH, SOUTH, WEST, EAST
     }
+
+    /** Method to change the state of the vehicle object.
+     * @param state The new state of the vehicle object.
+     */
+    public void changeState(State state){this.state = state;}
+
+    /** Get the state of the Vehicle object.
+     * @return The current state of the Vehicle object.
+     */
+    public State getState(){return state;}
 
     /**
      * Returns the current number of doors on the car.
