@@ -19,16 +19,21 @@ public class CarController {
     // A list of cars, modify if needed
     ArrayList<Vehicles> cars = new ArrayList<>();
     ArrayList<Scania> scaniaCars = new ArrayList<>();
+    ArrayList<Saab95> saabCars = new ArrayList<>();
     //methods:
 
     public static void main(String[] args) {
         // Instance of this class
         CarController cc = new CarController();
 
+        Scania scania = new Scania(0, 100);
+        Saab95 saab = new Saab95(0, 200);
+
         cc.cars.add(new Volvo240(0,0));
-        cc.cars.add(new Scania(0, 100));
-        cc.scaniaCars.add(new Scania(0, 100));
-        cc.cars.add(new Saab95(0, 200));
+        cc.cars.add(scania);
+        cc.scaniaCars.add(scania);
+        cc.cars.add(saab);
+        cc.saabCars.add(saab);
 
         // Start a new view and send a reference of self
         //cc.frame = new CarView("CarSim 1.0", cc);
@@ -76,33 +81,31 @@ public class CarController {
 
     // Calls setTurboOn only for Saabs in cars.
     void turboOn(){
-        for(Vehicles car : cars){
-            if(car instanceof Saab95)
-                ((Saab95) car).setTurboOn();
+        for(Saab95 car : saabCars){
+            car.setTurboOn();
         }
     }
 
     // Calls setTurboOff only for Saabs in cars.
     void turboOff(){
-        for(Vehicles car : cars){
-            if(car instanceof Saab95)
-                ((Saab95) car).setTurboOff();
+        for(Saab95 car : saabCars){
+             car.setTurboOff();
         }
     }
 
     // Calls increaseAngle only for Scania vehicles.
     void increaseAngle(int amount){
         double increaseAmount = ((double) amount) / 100;
-        for(Trucks car : scaniaCars){
-            car.raisePlatform();
+        for(Scania car : scaniaCars){
+            car.raisePlatform(increaseAmount);
         }
     }
 
     //Calls decreaseAngle only for Scania vehicles.
     void decreaseAngle(int amount){
         double decreaseAmount = ((double) amount) / 100;
-        for(Trucks car : scaniaCars){
-            car.lowerPlatform();
+        for(Scania car : scaniaCars){
+            car.lowerPlatform(decreaseAmount);
         }
     }
 }
