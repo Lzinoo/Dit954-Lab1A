@@ -1,16 +1,12 @@
 package model;// Authors: Leyl Cumar, Adam Norberg, Elias Haqiqat
 // Group 14
-import controller.Observer;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * A class that creates a car object
  */
-public abstract class Vehicles implements Movable, Observable {
-
-    private ArrayList<Observer> observers = new ArrayList<>();
+public abstract class Vehicles implements Movable {
 
     private int nrDoors; // Number of doors on the car
     private double currentSpeed; // The current speed of the car
@@ -238,7 +234,6 @@ public abstract class Vehicles implements Movable, Observable {
             case EAST -> setX(getX() + getCurrentSpeed());
             case WEST -> setX(getX() - getCurrentSpeed());
         }
-        notifyObservers();
     }
 
     /**
@@ -288,23 +283,6 @@ public abstract class Vehicles implements Movable, Observable {
         if (amount >= 0 && amount <= 1) {
             decrementSpeed(amount);
         }
-    }
-
-    @Override
-    public void registerObserver(Observer observer) {
-        observers.add(observer);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.update(this);
-        }
-    }
-
-    @Override
-    public void removeObserver(Observer observer) {
-        observers.remove(observer);
     }
 
     //Detects if the car hits or goes past the wall
