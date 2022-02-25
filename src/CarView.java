@@ -60,12 +60,15 @@ public class CarView extends JFrame{
         public void actionPerformed(ActionEvent e) {
             drawPanel.updateRender(carC.cars);
             for (Vehicles car : carC.cars) {
-                wallDetection(car);
-                int x = (int) Math.round(car.getX());
-                int y = (int) Math.round(car.getY());
-                drawPanel.moveit(carC.cars.indexOf(car),x, y);
-                // repaint() calls the paintComponent method of the panel
-                drawPanel.repaint();
+                switch(car.getState()){
+                    case ACTIVE: { wallDetection(car);
+                        int x = (int) Math.round(car.getX());
+                        int y = (int) Math.round(car.getY());
+                        drawPanel.moveit(carC.cars.indexOf(car),x, y);
+                        // repaint() calls the paintComponent method of the panel
+                        drawPanel.repaint(); }
+                    case INACTIVE: {}
+                }
             }
         }
     }

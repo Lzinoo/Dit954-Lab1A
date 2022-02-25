@@ -16,4 +16,11 @@ public interface Movable {
      * Method called to rotate the car right.
      */
     void turnRight();
+
+    /**
+     * The state of a movable.
+     */
+    enum State{
+        ACTIVE, INACTIVE
+    }
 }

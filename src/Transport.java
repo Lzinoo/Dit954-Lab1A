@@ -79,6 +79,7 @@ public class Transport extends Trucks {
      */
     public void mountCar(Cars carInput) {
         if (platformIsDown && loadedCars.size() < carCapacity) {
+            carInput.changeState(State.INACTIVE);
             switch (this.getDir()) {
                 case NORTH:
                     if (this.getY() - carInput.getY() <= 10
@@ -122,6 +123,7 @@ public class Transport extends Trucks {
         Vehicles unloadedCar;
         if (platformIsDown) {
             unloadedCar = loadedCars.pop();
+            unloadedCar.changeState(State.ACTIVE);
             unloadedCar.setDir(this.getDir());
             switch (this.getDir()) {
                 case NORTH:
