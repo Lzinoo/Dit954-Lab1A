@@ -58,6 +58,7 @@ public class CarView extends JFrame{
      * */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
+            drawPanel.updateRender(carC.cars);
             for (Vehicles car : carC.cars) {
                 wallDetection(car);
                 int x = (int) Math.round(car.getX());
@@ -68,10 +69,11 @@ public class CarView extends JFrame{
             }
         }
     }
+
     //Detects if the car hits or goes past the wall
     private void wallDetection(Vehicles car){
-        int imageHeight = drawPanel.carImage[0].getHeight();
-        int imageWidth = drawPanel.carImage[0].getWidth();
+        int imageHeight = drawPanel.carImage.get(0).getHeight();
+        int imageWidth = drawPanel.carImage.get(0).getWidth();
         int bottomBorder = drawPanel.getHeight();
         int rightBorder  = getWidth();
 

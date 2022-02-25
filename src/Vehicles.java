@@ -160,6 +160,14 @@ public abstract class Vehicles implements Movable {
     }
 
     /**
+     * Gets the modelName
+     * @return modelName
+     */
+    public String getModelName() {
+        return modelName;
+    }
+
+    /**
      * A method to set currentSpeed to 0.1
      */
     public void startEngine() {
