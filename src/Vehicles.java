@@ -180,16 +180,17 @@ public abstract class Vehicles implements Movable {
     }
 
     /**
-     * A method to set currentSpeed to 0.1
+     * A method to set the state of the car to Active
      */
     public void startEngine() {
-        currentSpeed = 0.1;
+        state = State.ACTIVE;
     }
 
     /**
-     * A method to set currentSpeed to 0.
+     * A method to set currentSpeed to 0 and the state to inactive
      */
     public void stopEngine() {
+        state = State.INACTIVE;
         currentSpeed = 0;
     }
 

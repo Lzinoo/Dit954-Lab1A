@@ -13,7 +13,7 @@ public class DrawPanel extends JPanel{
     //BufferedImage[] carImage = new BufferedImage[3];
     ArrayList<BufferedImage> carImage = new ArrayList<>(); //A list of images
     //Point[] carPoints = new Point[3];
-    ArrayList<Point> carPoints = new ArrayList<>(); // To keep track of a single cars position
+    ArrayList<Point> carPoints; // To keep track of a single cars position
 
     // TODO: Make this general for all cars
     void moveit(int index, int x, int y){
@@ -41,6 +41,8 @@ public class DrawPanel extends JPanel{
 
     //Looks at a list of cars and adds them to be rendered
     public void updateRender(ArrayList<Vehicles> vehicles) {
+        carPoints = new ArrayList<>();
+        carImage = new ArrayList<>();
         for (int i = 0; i < vehicles.size(); i++) {
             carPoints.add(i, new Point((int)vehicles.get(i).getX(),(int)vehicles.get(i).getY()));
             addImage(vehicles.get(i),i);
