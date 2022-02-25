@@ -1,7 +1,7 @@
+import model.Saab95;
+import model.Transport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class TransportTest {
 
@@ -25,7 +25,7 @@ class TransportTest {
     public void canCarBeLoaded() {
         testTransport.lowerPlatform();
         testTransport.mountCar(testSaab);
-        //testTransport.mountCar(new Transport(5));
+        //testTransport.mountCar(new model.Transport(5));
         assert (testTransport.getNumberOfMountedCars() == 1);
     }
 

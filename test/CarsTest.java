@@ -1,3 +1,6 @@
+import model.Saab95;
+import model.Vehicles;
+import model.Volvo240;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -5,7 +8,7 @@ class CarsTest {
     private Volvo240 testVolvo;
     private Saab95 testSaab;
 
-    // Create two Cars objects, one Volvo240 and one Saab95.
+    // Create two model.Cars objects, one model.Volvo240 and one model.Saab95.
     @BeforeEach
     void SetUp(){
         testVolvo = new Volvo240();
