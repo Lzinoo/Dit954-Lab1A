@@ -5,9 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class tickRate {
+public class Ticker {
 
-    private ArrayList<Vehicles> vehicles = new ArrayList<>();
+    private ArrayList<Vehicles> vehicles;
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
     private final int delay = 50;
@@ -22,7 +22,7 @@ public class tickRate {
         }
     });
 
-    public tickRate (ArrayList<Vehicles> vehicles) {
+    public Ticker(ArrayList<Vehicles> vehicles) {
         this.vehicles = vehicles;
     }
 

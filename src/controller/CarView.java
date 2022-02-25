@@ -1,7 +1,7 @@
 package controller;
 
 import model.Vehicles;
-import model.tickRate;
+import model.Ticker;
 import view.DrawPanel;
 
 import javax.swing.*;
@@ -24,8 +24,8 @@ public class CarView extends JFrame {
     private static final int X = 800;
     private static final int Y = 800;
 
-    private TimerListener tickListener = new TimerListener();
-    private tickRate timer;
+    private TimerListener timerListener = new TimerListener();
+    private Ticker timer;
 
 
     // The controller member
@@ -55,8 +55,8 @@ public class CarView extends JFrame {
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
-        timer = new tickRate(fetchCars());
-        timer.addListener(tickListener);
+        timer = new Ticker(fetchCars());
+        timer.addListener(timerListener);
         // Start the timer
         timer.start();
         initComponents(framename);
