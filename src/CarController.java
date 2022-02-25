@@ -95,7 +95,8 @@ public class CarController {
         }
     }
 
-
+    //Creates a popup asking what car the user wants to create. The response returns an int that is passed to
+    //VehiclesFactory if there are less than 10 cars currently.
     public void createCar() {
         if (cars.size() != 10) {
 
@@ -121,7 +122,8 @@ public class CarController {
         }
     }
 
-    void removeCar() {
+    //When called removes a car if there is more than 0 cars currently
+    public void removeCar() {
         if (cars.size() > 0) {
             cars.remove(cars.get(cars.size() - 1));
             carPoints.remove(carPoints.get(carPoints.size() - 1));

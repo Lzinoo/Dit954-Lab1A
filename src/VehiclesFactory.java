@@ -1,4 +1,5 @@
 public class VehiclesFactory {
+
     public Vehicles createVehicle(int response, int x, int y) {
         if (response == 0) {
             return new Volvo240(x, y);
