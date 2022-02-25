@@ -1,3 +1,7 @@
+/**
+ * A TransportFactory is a subclass to VehicleFactory, designed to return
+ * (create) Transport objects.
+ */
 public class TransportFactory extends VehicleFactory{
     public Vehicles createVehicle(){
         return new Transport(3,0,0);
