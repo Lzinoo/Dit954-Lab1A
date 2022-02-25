@@ -42,4 +42,12 @@ public abstract class Trucks extends Vehicles implements Platform{
     public void lowerPlatform() {
 
     }
+
+    /**
+     * A method used in calculating the truck's currentSpeed
+     */
+    @Override
+    public double speedFactor() {
+        return enginePower * 0.01;
+    }
 }

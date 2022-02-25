@@ -198,9 +198,7 @@ public abstract class Vehicles implements Movable {
     /**
      * A method used in calculating the car's currentSpeed
      */
-    public double speedFactor() {
-        return enginePower * 0.01;
-    }
+    public abstract double speedFactor();
 
     /**
      * Method to move the car along the X or Y axis depending on the

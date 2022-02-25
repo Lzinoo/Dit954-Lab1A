@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 /*
 * This class represents the Controller part in the MVC pattern.
@@ -20,6 +21,8 @@ public class CarController {
     ArrayList<Vehicles> cars = new ArrayList<>();
     ArrayList<Scania> scaniaCars = new ArrayList<>();
     ArrayList<Saab95> saabCars = new ArrayList<>();
+    VehiclesFactory vehiclesFactory = new VehiclesFactory();
+    ArrayList<Point> carPoints = new ArrayList<>();
     //methods:
 
     //Reverse the direction of the car
@@ -89,6 +92,39 @@ public class CarController {
         double decreaseAmount = ((double) amount) / 100;
         for(Scania car : scaniaCars){
             car.lowerPlatform(decreaseAmount);
+        }
+    }
+
+
+    public void createCar() {
+        if (cars.size() != 10) {
+
+            String[] options = new String[]{"Volvo240", "Saab95", "Scania", "Random"};
+            int response = JOptionPane.showOptionDialog(null, "What car do you want to add?", "Add a Car",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+
+            Random random = new Random();
+
+            if (response == 3) {
+                response = random.nextInt(3);
+            }
+
+            int size = cars.size();
+            int yPos = 60 * size;
+
+            if ((cars.size() < 10) && (response != -1)) {
+                Vehicles car = vehiclesFactory.createVehicle(response, 0, yPos);
+                cars.add(car);
+                carPoints.add(new Point());
+            }
+        }
+    }
+
+    void removeCar() {
+        if (cars.size() > 0) {
+            cars.remove(cars.get(cars.size() - 1));
+            carPoints.remove(carPoints.get(carPoints.size() - 1));
         }
     }
 }
