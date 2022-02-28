@@ -52,6 +52,7 @@ public class CarView extends JFrame {
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
+        //drawPanel.carPoints needs to be updated before initComponents or else it will throw a null-pointer exception
         drawPanel.updateListOfVehicles(cc.cars);
         drawPanel.update();
         initComponents(framename);

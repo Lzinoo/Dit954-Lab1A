@@ -54,7 +54,7 @@ public class DrawPanel extends JPanel implements Observer {
     }
 
     //Looks at a list of cars and adds them to be rendered
-    public void updateRender(ArrayList<Vehicles> vehicles) {
+    public void updateRender() {
         carPoints = new ArrayList<>();
         carImage = new ArrayList<>();
         for (int i = 0; i < vehicles.size(); i++) {
@@ -98,6 +98,6 @@ public class DrawPanel extends JPanel implements Observer {
 
     @Override
     public void update() {
-        updateRender(vehicles);
+        updateRender();
     }
 }
