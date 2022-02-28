@@ -40,6 +40,12 @@ public class CarController {
         cars.add(vehicle);
     }
 
+    public void registerScania(Scania scania) {scaniaCars.add(scania);}
+
+    public void registerSaab(Saab95 saab95) {
+        saabCars.add(saab95);
+    }
+
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
@@ -124,6 +130,10 @@ public class CarController {
             if ((cars.size() < 10) && (response != -1)) {
                 Vehicles car = vehiclesFactory.createVehicle(response, 0, yPos);
                 cars.add(car);
+                if (response == 1)
+                    saabCars.add((Saab95) car);
+                else if (response == 2)
+                    scaniaCars.add((Scania) car);
                 carPoints.add(new Point());
             }
         }

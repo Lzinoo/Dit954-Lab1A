@@ -27,9 +27,9 @@ public class CarMain {
         Scania scania = (Scania) create(scaniaFactory,0,100);
         Saab95 saab = (Saab95) create(saabFactory,0,200);
         cc.addCars(scania);
-        /*cc.scaniaCars.add(scania);
-        cc.cars.add(saab);
-        cc.saabCars.add(saab);*/
+        cc.registerScania(scania);
+        cc.addCars(saab);
+        cc.registerSaab(saab);
         return cc;
     }
 

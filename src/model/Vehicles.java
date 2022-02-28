@@ -300,6 +300,5 @@ public abstract class Vehicles implements Movable {
             turnLeft();
             turnLeft();
         }
-        move();
     }
 }

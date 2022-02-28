@@ -7,7 +7,6 @@ import java.awt.*;
  */
 public abstract class Trucks extends Vehicles implements Platform{
     private int nrDoors;
-    private double enginePower;
     private Color color;
     private String modelName;
 
@@ -50,6 +49,6 @@ public abstract class Trucks extends Vehicles implements Platform{
      */
     @Override
     public double speedFactor() {
-        return enginePower * 0.01;
+        return super.getEnginePower()* 0.01;
     }
 }
