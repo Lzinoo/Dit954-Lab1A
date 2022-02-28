@@ -53,6 +53,7 @@ public class CarView extends JFrame {
     public CarView(String framename, CarController cc){
         this.carC = cc;
         drawPanel.updateListOfVehicles(cc.cars);
+        drawPanel.update();
         initComponents(framename);
     }
 

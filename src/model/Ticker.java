@@ -25,11 +25,13 @@ public class Ticker implements Observable{
                     case ACTIVE: {
                         int carIndex = vehicles.indexOf(car);
                         car.wallDetection(60, 100,
-                                800, 800);
+                                560, 800);
+                        car.move();
                     }
                     case INACTIVE: {}
                 }
             }
+            notifyObservers();
         }
     });
 
