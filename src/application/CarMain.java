@@ -8,14 +8,21 @@ import model.factory.ScaniaFactory;
 import model.factory.VehicleFactory;
 import model.factory.VolvoFactory;
 
+import java.util.ArrayList;
+
 
 public class CarMain {
     private static VehicleFactory volvoFactory;
     private static VehicleFactory scaniaFactory;
     private static VehicleFactory saabFactory;
+
+    private static ArrayList<Observer> observers = new ArrayList<>();
+
     public static void main(String[] args) {
         CarController cc = configure();
         CarView carView = new CarView("controller.CarView 2.0",cc);
+        observers.add(carView.getPanel());
+        Ticker timer = new Ticker(cc.getCars(), observers);
     }
 
     static CarController configure(){

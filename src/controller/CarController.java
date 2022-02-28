@@ -36,6 +36,10 @@ public class CarController {
         car.turnLeft();
     }
 
+    public ArrayList<Vehicles> getCars() {
+        return cars;
+    }
+
     public void addCars(Vehicles vehicle) {
         cars.add(vehicle);
     }

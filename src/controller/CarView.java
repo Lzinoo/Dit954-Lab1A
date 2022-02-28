@@ -24,9 +24,6 @@ public class CarView extends JFrame {
     private static final int X = 800;
     private static final int Y = 800;
 
-    private TimerListener timerListener = new TimerListener();
-    private Ticker timer;
-
 
     // The controller member
     CarController carC;
@@ -55,30 +52,13 @@ public class CarView extends JFrame {
     // Constructor
     public CarView(String framename, CarController cc){
         this.carC = cc;
-        timer = new Ticker(fetchCars());
-        timer.addListener(timerListener);
-        // Start the timer
-        timer.start();
+        drawPanel.updateListOfVehicles(cc.cars);
         initComponents(framename);
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     * */
-    private class TimerListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            for (Vehicles car : carC.cars) {
-                switch(car.getState()){
-                    case ACTIVE: {
-                        int carIndex = carC.cars.indexOf(car);
-                        car.wallDetection(drawPanel.getCarHeight(carIndex), drawPanel.getCarWidth(carIndex),
-                            drawPanel.getHeight(), drawPanel.getWidth());
-                    }
-                    case INACTIVE: {}
-                }
-            }
-            drawPanel.updateRender(carC.cars);
-        }
+    //Getter for the DrawPanel
+    public DrawPanel getPanel() {
+        return drawPanel;
     }
 
     // Getter for all cars to be rendered

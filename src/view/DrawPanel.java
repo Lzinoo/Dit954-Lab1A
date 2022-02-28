@@ -1,5 +1,6 @@
 package view;
 
+import application.Observer;
 import controller.CarView;
 import model.Saab95;
 import model.Scania;
@@ -15,13 +16,14 @@ import javax.swing.*;
 
 // This panel represent the animated part of the view with the car images.
 
-public class DrawPanel extends JPanel{
+public class DrawPanel extends JPanel implements Observer {
 
     // Just a single image
     //BufferedImage[] carImage = new BufferedImage[3];
     ArrayList<BufferedImage> carImage = new ArrayList<>(); //A list of images
     //Point[] carPoints = new Point[3];
     ArrayList<Point> carPoints; // To keep track of a single cars position
+    ArrayList<Vehicles> vehicles; // All vehicles to be rendered
 
     // TODO: Make this general for all cars
     void moveit(int index, int x, int y){
@@ -35,6 +37,10 @@ public class DrawPanel extends JPanel{
         this.setPreferredSize(new Dimension(x, y));
         this.setBackground(Color.green);
 
+    }
+
+    public void updateListOfVehicles (ArrayList<Vehicles> vehicles) {
+        this.vehicles = vehicles;
     }
 
     // This method is called each time the panel updates/refreshes/repaints itself
@@ -88,5 +94,10 @@ public class DrawPanel extends JPanel{
 
     public int getCarWidth(int index) {
         return carImage.get(index).getWidth();
+    }
+
+    @Override
+    public void update() {
+        updateRender(vehicles);
     }
 }
